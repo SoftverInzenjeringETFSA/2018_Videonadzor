@@ -153,12 +153,11 @@
 
  /* VERTICAL NAVBAR */
  #awareLogo{
-    height: 50px;
- }
- .sidebar-brand{
-     margin: 1em 0em;
- }
-
+  height: 50px;
+}
+.sidebar-brand{
+   margin: 1em 0em;
+}
 /* VIDEOS LIST */
 #videos {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -198,14 +197,13 @@
 .watch-button{
   background-color: #2c6fd4;
 }
-
-#scheduledDeletionForm{
-  margin-bottom: 1em;
-  padding: 0.5em;
-  background-color: #f8f9fa ;
+.edit-button{
+  background-color: #8ec957;
+ 
+  padding: 2px 7px;
 }
 
-#searchForm{
-  padding: 0.5em;
-  background-color: #b42e34;
+.form-inline{
+  margin: 1em;
 }
+

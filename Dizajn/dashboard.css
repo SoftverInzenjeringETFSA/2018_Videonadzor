@@ -163,19 +163,22 @@
  /* SECTIONS*/
  .section{
     margin: 1em 0em;
-    background-color: #f0f0f0;
+    background-color: #fafafa;
     width: 100%;
  }
 
  .section-title{
-    background-color: #66717E;
+    background-color: #d42c35;
     color: white;
     width: 100%;
     padding-left: 1em;
     font-size: 1.2em;
     font-weight:600;
  }
-
+ .section-title a{
+    color: white;
+    font-weight:300;
+ }
  .section-content{
     display: flex;
     flex-wrap: wrap;
@@ -192,9 +195,15 @@
     width: 11em;
     border: 1px grey solid;
  }
+ .placeholder-camera{
+  background-color: white;
+  height: 11em;
+  width: 15em;
+  border: 1px grey solid;
+ }
  .cameraName{
      color: white;
-    background-color: grey;
+    background-color: rgb(66, 66, 66);
     padding: 0.2em;
     padding-left: 1em;
     

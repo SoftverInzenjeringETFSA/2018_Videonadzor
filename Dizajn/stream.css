@@ -162,6 +162,7 @@
 /* STREAM */
 #contentBody{
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-content: space-around;
 }
@@ -175,9 +176,26 @@
 }
 .video-controls{
   height: 3em;
-  background-color: #383B53;
+  background-color: #d42c35;
 }
 .player{
   padding-top: 0.25em;
 }
-/**/
+/*SCREENSHOTS*/
+.screenshot-container{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.screenshot-container-title{
+  font-size: 1.5em;
+  padding-left: 0.5em;
+  background-color: #0e0e0e;
+  color: white;
+}
+.screenshot{
+  margin: 0.5em;
+  border: 1px grey solid;
+  height: 15em;
+  width: 15em;
+}

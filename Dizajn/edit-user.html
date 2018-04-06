@@ -6,7 +6,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="stream.css">
+        <link rel="stylesheet" href="edit-user.css">
 </head>
 <body>
         <div id="wrapper" class="toggled">
@@ -38,10 +38,9 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
                 <div class="container-fluid">
-
                     <nav id="horizontalNavbar" class="navbar navbar-expand-lg navbar-light bg-light">
                         <div>
-                            <p id="menuText">Video Name</p>
+                            <p id="menuText">Users</p>
                         </div>
                         <div id="userDiv">
                             <a href="#" id="userName">Username</a>
@@ -49,48 +48,32 @@
                         </div>
                     </nav>
                     <div id="contentBody" >
-                        <div class="video-container">
-                            <div class="video-streamer"></div>
-                            <div class="video-controls">
-                                <div class="player text-center">
-                                    <button type="button" id="button_fbw" class="btn">
-                                        <i class="fa fa-fast-backward"></i>
-                                    </button>
-                                    
-                                    <button type="button" id="button_bw" class="btn">
-                                        <i class="fa fa-backward"></i>
-                                    </button>
-                                    
-                                    <button type="button" id="button_play" class="btn">
-                                        <i class="fa fa-play"></i>
-                                    </button>
-                                    
-                                    <button type="button" id="button_stop" class="btn">
-                                        <i class="fa fa-stop"></i>
-                                    </button>
-                                    
-                                    <button type="button" id="button_fw" class="btn" >
-                                        <i class="fa fa-forward"></i>
-                                    </button>
-                                    
-                                    <button type="button" id="button_ffw" class="btn">
-                                        <i class="fa fa-fast-forward"></i>
-                                    </button>    
-                                </div>
-                            </div>
+                        <div id="editForm">
+                            
+                            <form class="form">
+                                <label>Username</label>
+                                <input class="form-control" type="text" placeholder="Username">
+                                <form class="form">
+                                <label>First name</label>
+                                <input class="form-control" type="text" placeholder="First name">
+                                <form class="form">
+                                <label>Last name</label>
+                                <input class="form-control" type="text" placeholder="Last name">
+                                <label>Email</label>
+                                <input class="form-control" type="text" placeholder="Email">
+                                <label>Password</label>
+                                <input class="form-control" type="password" placeholder="passord">
+                                <label>Role</label>
+                                <select class="form-control">
+                                    <option>User</option>
+                                    <option>Admin</option>
+                                    <option>Camera owner</option>
+                                </select>
+                                <button id="submitButton" class="btn" type="submit">Save changes</button>
+                                
+                            </form>
                         </div>
-                        <div class="screenshot-container-title">Screenshots</div>
-                        <div class="screenshot-container">
-                            <div class="screenshot"></div>
-                            <div class="screenshot"></div>
-                            <div class="screenshot"></div>
-                            <div class="screenshot"></div>
-                            <div class="screenshot"></div>
-                            <div class="screenshot"></div>
-                            <div class="screenshot"></div>
-                            <div class="screenshot"></div>
-                            <div class="screenshot"></div>
-                        </div>
+                     
                     </div>
                      
                 </div>
