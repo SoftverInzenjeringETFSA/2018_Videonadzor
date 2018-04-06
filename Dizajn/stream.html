@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="stream.css">
+</head>
+<body>
+        <div id="wrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <img id="awareLogo" src="aware_logo.png" alt="User">
+                    </li>
+                    <li>
+                        <a href="./dashboard.html">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="./videos.html">Videos</a>
+                    </li>
+                    <li>
+                        <a href="#">Users</a>
+                    </li>
+                    <li>
+                        <a href="#">Cameras</a>
+                    </li>
+                    <li>
+                        <a href="./stream.html">Live stream</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+                
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <nav id="horizontalNavbar" class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div>
+                            <p id="menuText">Video Name</p>
+                        </div>
+                        <div id="userDiv">
+                            <a href="#" id="userName">Username</a>
+                            <img id="userImage" class="float-right" src="user.png" alt="User">
+                        </div>
+                    </nav>
+                    <div id="contentBody" >
+                        <div class="video-container">
+                            <div class="video-streamer"></div>
+                            <div class="video-controls">
+                                <div class="player text-center">
+                                    <button type="button" id="button_fbw" class="btn">
+                                        <i class="fa fa-fast-backward"></i>
+                                    </button>
+                                    
+                                    <button type="button" id="button_bw" class="btn">
+                                        <i class="fa fa-backward"></i>
+                                    </button>
+                                    
+                                    <button type="button" id="button_play" class="btn">
+                                        <i class="fa fa-play"></i>
+                                    </button>
+                                    
+                                    <button type="button" id="button_stop" class="btn">
+                                        <i class="fa fa-stop"></i>
+                                    </button>
+                                    
+                                    <button type="button" id="button_fw" class="btn" >
+                                        <i class="fa fa-forward"></i>
+                                    </button>
+                                    
+                                    <button type="button" id="button_ffw" class="btn">
+                                        <i class="fa fa-fast-forward"></i>
+                                    </button>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                </div>
+
+            </div>
+            <!-- /#page-content-wrapper -->
+    
+        </div>
+        <!-- /#wrapper -->
+            
+        <!-- Bootstrap core JavaScript -->
+
+    
+        <!-- Menu Toggle Script -->
+        <!-- <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        </script> -->
+</body>
+</html>

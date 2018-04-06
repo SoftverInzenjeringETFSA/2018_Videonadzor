@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="videos.css">
+</head>
+<body>
+        <div id="wrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <img id="awareLogo" src="aware_logo.png" alt="User">
+                    </li>
+                    <li>
+                        <a href="./dashboard.html">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="./videos.html">Videos</a>
+                    </li>
+                    <li>
+                        <a href="#">Users</a>
+                    </li>
+                    <li>
+                        <a href="#">Cameras</a>
+                    </li>
+                    <li>
+                        <a href="./stream.html">Live stream</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+                
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <nav id="horizontalNavbar" class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div>
+                            <p id="menuText">Videos</p>
+                        </div>
+                        <div id="userDiv">
+                            <a href="#" id="userName">Username</a>
+                            <img id="userImage" class="float-right" src="user.png" alt="User">
+                        </div>
+                    </nav>
+                    <div id="contentBody" >
+                        <div id="forms">
+                            <div id="scheduledDeletionForm">
+                                <div>
+                                    <div>Deletion is scheduled on: 12.05.2018. 22:30</div>
+                                    <div>Edit the scheduled deletion time:</div>
+                                    <form class="form-inline">
+                                        <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-primary my-2 my-sm-0" type="Save">Save changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <table id="videos">
+                            <tr>
+                                <th>Video</th>
+                                <th>Date <i class="fa fa-caret-up"></i></th>
+                                <th>Camera</th>
+                                <th>
+                                    <form class="form-inline">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn my-2 my-sm-0" style="background-color:#383B53; color:white;" type="submit">Search</button>
+                                    </form>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>01-02-2018_22-30</td>
+                                <td>01.02.2018</td>
+                                <td>Camera1</td>
+                                <td>
+                                    <button class ="remove-button"><i class="fa fa-times"></i>
+                                    <button class ="watch-button"><i class="fa fa-eye"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12-07-2018_06-10</td>
+                                <td>12.07.2018</td>
+                                <td>Camera2</td>
+                                <td>
+                                    <button class ="remove-button"><i class="fa fa-times"></i>
+                                    <button class ="watch-button"><i class="fa fa-eye"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>01-02-2018_22-30</td>
+                                <td>01.02.2018</td>
+                                <td>Camera1</td>
+                                <td>
+                                    <button class ="remove-button"><i class="fa fa-times"></i>
+                                    <button class ="watch-button"><i class="fa fa-eye"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12-07-2018_06-10</td>
+                                <td>12.07.2018</td>
+                                <td>Camera2</td>
+                                <td>
+                                    <button class ="remove-button"><i class="fa fa-times"></i>
+                                    <button class ="watch-button"><i class="fa fa-eye"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>01-02-2018_22-30</td>
+                                <td>01.02.2018</td>
+                                <td>Camera1</td>
+                                <td>
+                                    <button class ="remove-button"><i class="fa fa-times"></i>
+                                    <button class ="watch-button"><i class="fa fa-eye"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>12-07-2018_06-10</td>
+                                <td>12.07.2018</td>
+                                <td>Camera2</td>
+                                <td>
+                                    <button class ="remove-button"><i class="fa fa-times"></i>
+                                    <button class ="watch-button"><i class="fa fa-eye"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                     
+                </div>
+
+            </div>
+            <!-- /#page-content-wrapper -->
+    
+        </div>
+        <!-- /#wrapper -->
+            
+        <!-- Bootstrap core JavaScript -->
+
+    
+        <!-- Menu Toggle Script -->
+        <!-- <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        </script> -->
+</body>
+</html>
