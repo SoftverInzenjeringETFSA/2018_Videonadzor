@@ -1,0 +1,36 @@
+#container{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    background-color: #000;
+
+}
+
+#logo{
+    grid-column: 1;
+    grid-row: 2;
+    width: 17em;
+}
+
+#form{
+    grid-column: 2;
+    grid-row: 2;
+    color: white;
+}
+
+#form div{
+    font-size: 1.5em;
+    color: #b42e34;
+    font-weight: 700;
+}
+
+input{
+    width: 60%;
+}
+#loginButton{
+    margin-top: 0.5em;
+    background-color: #b42e34;
+    width: 60%;
+    color: white;
+}
