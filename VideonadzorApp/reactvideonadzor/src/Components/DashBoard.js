@@ -4,6 +4,7 @@ import AddUser from './AddUser.js'
 import Users from './Users.js'
 import Videos from './Videos.js'
 import HorizontalNavBar from './HorizontalNavBar.js'
+import Stream from './Stream.js'
 import './Css/dashboard.css'
 
 
@@ -18,7 +19,7 @@ class DashBoard extends Component{
                 <div className="container-fluid">
 
                     <HorizontalNavBar />
-                    <Videos />
+                    <Stream />
                 </div>
 
             </div>
