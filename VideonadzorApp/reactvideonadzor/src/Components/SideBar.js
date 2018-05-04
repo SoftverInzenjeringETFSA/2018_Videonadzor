@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from './Icons/aware_logo.png'
 import './Css/dashboard.css'
+import { Link } from 'react-router-dom'
 
 class SideBar extends Component {
   render(){
@@ -11,19 +12,19 @@ class SideBar extends Component {
                         <img id="awareLogo" src={logo} alt="User" />
                     </li>
                     <li>
-                        <a href="./dashboard.html">Dashboard</a>
+                        <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
-                        <a href="./videos.html">Videos</a>
+                        <Link to="/videos">Videos</Link>
                     </li>
                     <li>
-                        <a href="./users.html">Users</a>
+                        <Link to="/users">Users</Link>
                     </li>
                     <li>
-                        <a href="./stream.html">Live stream</a>
+                        <Link to="/stream">Live stream</Link>
                     </li>
                     <li>
-                        <a href="./add-user.html">Add user</a>
+                        <Link to="/addUser">Add user</Link>
                     </li>
                 </ul>
             </div>
