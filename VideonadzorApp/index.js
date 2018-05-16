@@ -19,4 +19,20 @@ const app = express()
 const PORT = 27017;
 
 
+app.post('/addVideo', (req,res)=>{
+    console.log('dosao sam ovdje')
+    MongoClient.connect(uri, function(err, client){
+        if (err) throw err;
+        const collection = client.db('test').collection('videos');
+        collection.insertOne(req, (err,res)=>{
+            if(err)throw err;
+            console.log(res);
+            console.log('Navodno smo upisali jedan fjal')
+            client.close();
+        });
+        
+    })
+    res.send('sve je dobro')
+})
+
 app.listen(PORT, ()=>console.log(`Server is running on port ${PORT}`) )
