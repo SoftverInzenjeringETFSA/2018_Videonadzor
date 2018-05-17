@@ -4,6 +4,7 @@ import Webcam from './Webcam.js'
 import axios from 'axios'
 import {captureUserMedia} from './Utils/AppUtils.js'
 import './Css/stream.css'
+import ZakaziTerminSnimanja from './ZakaziTerminSnimanja.js';
 
 class VideoContainer extends Component{
 
@@ -12,7 +13,7 @@ class VideoContainer extends Component{
         this.state={width:100, height:100}
         this.pokreniSnimanje = this.pokreniSnimanje.bind(this)
         this.zaustaviSnimanje = this.zaustaviSnimanje.bind(this)
-        this.requestUserMedia = this.requestUserMedia.bind(this);
+        this.requestUserMedia = this.requestUserMedia.bind(this)
     }
 
     componentDidMount(){
@@ -71,6 +72,7 @@ class VideoContainer extends Component{
         })
 
     }
+
     
     render(){
         return(
@@ -80,6 +82,7 @@ class VideoContainer extends Component{
                 </div>
                     <div><button onClick={this.pokreniSnimanje}>Start Record</button></div>
                     <div><button onClick={this.zaustaviSnimanje}>Stop Record</button></div>
+                    <ZakaziTerminSnimanja />
                 {/*<div className="video-controls">
                     <div className="player text-center">
                         <button type="button" id="button_fbw" className="btn">

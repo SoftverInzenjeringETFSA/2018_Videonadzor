@@ -18,11 +18,8 @@ MongoClient.connect(uri, function(err, client) {
    const collection = client.db("test").collection("devices");
    collection.insert({param1:"nesto",param2:"ooo"});
    // perform actions on the collection object
-   client.close();
-});
-
-
-
+   client.close()
+}
 app.use(bodyParser.json())
 
 
@@ -54,7 +51,6 @@ app.post('/zakaziTermin', (req, res)=>{
 
 
 
-
 app.post('/addVideo', upload.single('data'), (req,res, next)=>{
     console.log('dosao sam ovdje')
     console.log( req.body ) 
@@ -70,9 +66,7 @@ app.post('/addVideo', upload.single('data'), (req,res, next)=>{
         });
         
     })
-    res.send('sve je dobro')
-})
-
+    res.send('sve j
 <<<<<<< HEAD
 app.post('/searchVideos', upload.single('data'), (req,res, next)=>{
     let searchString = req.body.data;
@@ -85,10 +79,5 @@ app.post('/getVideo', upload.single('data'), (req,res, next)=>{
     let naziv = req.body.data;
     //dddd
     res.send("ddd")
-})
-=======
-
-
->>>>>>> e06d96b00b5033d457b3fbb23d206259922c763e
-
-app.listen(PORT, ()=>console.log(`Server is running on port ${PORT}`) )
+}):
+	    app.listen(PORT, ()=>console.log(`Server is running on port ${PORT}`) )
