@@ -53,14 +53,23 @@ class VideoContainer extends Component{
             let params = {
               type: 'video/webm',
               data: this.state.recordVideo.blob,
-              id: Math.floor(Math.random()*90000) + 10000,
-              name: new Date().toString()
             }
+
+            var fd = new FormData(); 
+            fd.append('data', this.state.recordVideo.getBlob() )
+
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            }
+
             console.log(params)
-            axios.post('http://localhost:27017/addVideo', {params}).then((res)=>{
+            axios.post('http://localhost:27017/addVideo', fd, config).then((res)=>{
                 console.log(res)
             })
         })
+
     }
     
     render(){

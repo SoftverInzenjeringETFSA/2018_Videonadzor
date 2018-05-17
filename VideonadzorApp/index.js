@@ -5,6 +5,8 @@
 var MongoClient = require('mongodb').MongoClient;
 const express = require('express')
 var bodyParser = require('body-parser')
+var multer = require('multer')
+var upload = multer({ dest: 'uploads/' })
 
 var uri = "mongodb+srv://aalic:aalic@videonadzor-kxlur.mongodb.net/test?retryWrites=true";
 MongoClient.connect(uri, function(err, client) {
@@ -20,12 +22,13 @@ const app = express()
 
 const PORT = 27017;
 
-app.use(bodyParser.json());
 
-app.post('/addVideo', (req,res)=>{
+
+app.post('/addVideo', upload.single('data'), (req,res, next)=>{
     console.log('dosao sam ovdje')
     console.log( req.body ) 
-   MongoClient.connect(uri, function(err, client){
+    console.log(req.file)
+   /*MongoClient.connect(uri, function(err, client){
         if (err) throw err;
         const collection = client.db('test').collection('videos');
         collection.insertOne(req.body, (err,res)=>{
@@ -35,7 +38,7 @@ app.post('/addVideo', (req,res)=>{
             client.close();
         });
         
-    })
+    })*/
     res.send('sve je dobro')
 })
 
