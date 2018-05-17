@@ -73,9 +73,31 @@ app.post('/addVideo', upload.single('data'), (req,res, next)=>{
     res.send('sve je dobro')
 })
 
+app.post('/dajTermine', (req, res)=>{    
+    MongoClient.connect(uri, function(err, client){
+        if (err) throw err;
+        const collection = client.db('test').collection('terminiSnimanja');
+        collection.find({}).toArray(function(err, results) {
+            console.log(results);
+        });
+    }) 
+    console.log("daj mi termine");
+    var lista = ["vrijeme1", "vrijeme2", "vrijeme3"];
+    res.send(lista);
+})
+
 app.post('/searchVideos', upload.single('data'), (req,res, next)=>{
     let searchString = req.body.data;
-    //console.log(searchString) 
+    //kontakt sa bazom radi ali trenutno polja ne lice ni nasta zbog silnog testiranja, pa se vracaju uvijek isti podaci dok se ne popravi baza
+    /*
+    MongoClient.connect(uri, function(err, client){
+        if (err) throw err;
+        const collection = client.db('test').collection('videos');
+        collection.find({}).toArray(function(err, results) {
+            console.log(results);
+            res.send(results);
+        });
+    }) */
     let searchResults = [{naziv: "01-02-2018_22-30", kamera: 1}, {naziv: "01-03-2018_22-30", kamera: 2}, {naziv: "01-04-2018_22-30", kamera: 1}];
     res.send(searchResults)
 })
