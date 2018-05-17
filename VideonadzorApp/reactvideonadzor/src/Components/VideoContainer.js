@@ -56,7 +56,8 @@ class VideoContainer extends Component{
               id: Math.floor(Math.random()*90000) + 10000,
               name: new Date().toString()
             }
-            axios.post('http://localhost:27017/addVideo', params).then((res)=>{
+            console.log(params)
+            axios.post('http://localhost:27017/addVideo', {params}).then((res)=>{
                 console.log(res)
             })
         })
