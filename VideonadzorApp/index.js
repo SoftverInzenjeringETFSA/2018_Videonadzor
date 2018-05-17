@@ -28,17 +28,17 @@ app.post('/addVideo', upload.single('data'), (req,res, next)=>{
     console.log('dosao sam ovdje')
     console.log( req.body ) 
     console.log(req.file)
-   /*MongoClient.connect(uri, function(err, client){
+   MongoClient.connect(uri, function(err, client){
         if (err) throw err;
         const collection = client.db('test').collection('videos');
-        collection.insertOne(req.body, (err,res)=>{
+        collection.insertOne(req.file, (err,res)=>{
             if(err)throw err;
             //console.log(res);
             console.log('Navodno smo upisali jedan fjal')
             client.close();
         });
         
-    })*/
+    })
     res.send('sve je dobro')
 })
 
