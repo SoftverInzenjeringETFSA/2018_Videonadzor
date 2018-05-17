@@ -5,6 +5,7 @@ import axios from 'axios'
 import {captureUserMedia} from './Utils/AppUtils.js'
 import './Css/stream.css'
 import ZakaziTerminSnimanja from './ZakaziTerminSnimanja.js';
+import PrikaziTermineSnimanja from './PrikaziTermineSnimanja.js';
 
 class VideoContainer extends Component{
 
@@ -82,7 +83,8 @@ class VideoContainer extends Component{
                 </div>
                     <div><button onClick={this.pokreniSnimanje}>Start Record</button></div>
                     <div><button onClick={this.zaustaviSnimanje}>Stop Record</button></div>
-                    <ZakaziTerminSnimanja />
+                    <div><ZakaziTerminSnimanja /></div>
+                    <div><PrikaziTermineSnimanja /></div>
                 {/*<div className="video-controls">
                     <div className="player text-center">
                         <button type="button" id="button_fbw" className="btn">

@@ -11,14 +11,10 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "react-webcam": "^0.5.0",
-<<<<<<< HEAD
     "recordrtc": "^5.4.6",
     "redux": "^4.0.0",
     "video-react": "^0.10.5"
-=======
     "reactjs-popup": "^1.1.1",
-    "recordrtc": "^5.4.6"
->>>>>>> e06d96b00b5033d457b3fbb23d206259922c763e
   },
   "scripts": {
     "start": "react-scripts start",

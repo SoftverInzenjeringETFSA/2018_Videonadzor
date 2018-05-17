@@ -52,7 +52,29 @@ app.post('/zakaziTermin', (req, res)=>{
     res.send("Uspjesno je upisano vrijeme " + JSON.stringify(req.body) )
 })
 
+app.post('/dajTermine', (req, res)=>{    
+    MongoClient.connect(uri, function(err, client){
+        if (err) throw err;
+        const collection = client.db('test').collection('terminiSnimanja');
+        collection.find({}).toArray(function(err, results) {            
+            res.send(results);
+            client.close();
+        });        
+    }) 
+})
 
+app.post('/brisiTermin', (req, res)=>{    
+    console.log(req.body)
+    MongoClient.connect(uri, function(err, client){
+        if (err) throw err;        
+        const collection = client.db('test').collection('terminiSnimanja');
+        collection.deleteOne({ vrijemePocetka: req.body.vrijemePocetka, vrijemeKraja: req.body.vrijemeKraja }, function(err, obj) {
+            if (err) throw err;
+            res.send(obj.result.n + " document(s) deleted");
+            client.close();
+        });
+    });
+})
 
 
 app.post('/addVideo', upload.single('data'), (req,res, next)=>{
@@ -71,19 +93,6 @@ app.post('/addVideo', upload.single('data'), (req,res, next)=>{
         
     })
     res.send('sve je dobro')
-})
-
-app.post('/dajTermine', (req, res)=>{    
-    MongoClient.connect(uri, function(err, client){
-        if (err) throw err;
-        const collection = client.db('test').collection('terminiSnimanja');
-        collection.find({}).toArray(function(err, results) {
-            console.log(results);
-        });
-    }) 
-    console.log("daj mi termine");
-    var lista = ["vrijeme1", "vrijeme2", "vrijeme3"];
-    res.send(lista);
 })
 
 app.post('/searchVideos', upload.single('data'), (req,res, next)=>{
