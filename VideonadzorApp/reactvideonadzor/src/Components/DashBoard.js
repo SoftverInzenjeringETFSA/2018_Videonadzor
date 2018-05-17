@@ -4,6 +4,7 @@ import SideBar from './SideBar.js'
 import AddUser from './AddUser.js'
 import Users from './Users.js'
 import Videos from './Videos.js'
+import Video from './PlayVideo.js'
 import HorizontalNavBar from './HorizontalNavBar.js'
 import Stream from './Stream.js'
 import './Css/dashboard.css'
@@ -26,6 +27,7 @@ class DashBoard extends Component{
                       <Route  path='/users' component={Users} />
                       <Route  path='/videos' component={Videos} />
                       <Route  path='/addUser' component={AddUser} />
+                      <Route  path='/playVideo' component={Video} />
                     </Switch>
                 </div>
 

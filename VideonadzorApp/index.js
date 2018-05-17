@@ -31,7 +31,7 @@ app.post('/addVideo', upload.single('data'), (req,res, next)=>{
    MongoClient.connect(uri, function(err, client){
         if (err) throw err;
         const collection = client.db('test').collection('videos');
-        collection.insertOne(req.file, (err,res)=>{
+        collection.insertOne({name: new Date(), data:req.file}, (err,res)=>{
             if(err)throw err;
             //console.log(res);
             console.log('Navodno smo upisali jedan fjal')
@@ -40,6 +40,19 @@ app.post('/addVideo', upload.single('data'), (req,res, next)=>{
         
     })
     res.send('sve je dobro')
+})
+
+app.post('/searchVideos', upload.single('data'), (req,res, next)=>{
+    let searchString = req.body.data;
+    //console.log(searchString) 
+    let searchResults = [{naziv: "01-02-2018_22-30", kamera: 1}, {naziv: "01-03-2018_22-30", kamera: 2}, {naziv: "01-04-2018_22-30", kamera: 1}];
+    res.send(searchResults)
+})
+
+app.post('/getVideo', upload.single('data'), (req,res, next)=>{
+    let naziv = req.body.data;
+    //dddd
+    res.send("ddd")
 })
 
 app.listen(PORT, ()=>console.log(`Server is running on port ${PORT}`) )
