@@ -73,7 +73,6 @@ app.post('/addVideo', upload.single('data'), (req,res, next)=>{
     res.send('sve je dobro')
 })
 
-<<<<<<< HEAD
 app.post('/searchVideos', upload.single('data'), (req,res, next)=>{
     let searchString = req.body.data;
     //console.log(searchString) 
@@ -86,9 +85,7 @@ app.post('/getVideo', upload.single('data'), (req,res, next)=>{
     //dddd
     res.send("ddd")
 })
-=======
 
 
->>>>>>> e06d96b00b5033d457b3fbb23d206259922c763e
 
 app.listen(PORT, ()=>console.log(`Server is running on port ${PORT}`) )
