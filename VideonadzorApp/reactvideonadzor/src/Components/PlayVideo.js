@@ -18,7 +18,7 @@ class Video extends React.Component {
     render() {
       return(
         <div>
-          <video ref="vidRef" src="https://clips.vorwaerts-gmbh.de/VfE_html5.mp4" type="video/mp4"></video>
+          <video ref="vidRef" src="/vaj" type="video/webm"></video>
           <Buttons playVideo={this.playVideo.bind(this)} pauseVideo={this.pauseVideo.bind(this)} />
         </div>
       );

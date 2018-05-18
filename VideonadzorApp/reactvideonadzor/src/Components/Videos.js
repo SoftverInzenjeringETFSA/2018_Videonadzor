@@ -13,7 +13,10 @@ class Videos extends Component{
         this.state = {
             searchString: '',
             //rows: [{naziv: "01-02-2018_22-30", kamera: 1}]
-            rows: []
+            rows: [],
+            open: false,
+            video: null,
+            url: null
         };
         this.pretraziVidee = this.pretraziVidee.bind(this);
         this.pustiSnimak = this.pustiSnimak.bind(this);
@@ -27,7 +30,12 @@ class Videos extends Component{
             }
         }
         axios.post('http://localhost:27017/getVideo', fd, config).then((res)=>{
-            window.location = '/playVideo'
+            var binaryData = [];
+            binaryData.push(res.data);
+            this.setState({video: new Blob(binaryData)});
+            this.setState({url: URL.createObjectURL(this.state.video), open: true});
+            console.log(this.state.url);
+            link = this.state.url;
         })
     }
     pretraziVidee() {
@@ -59,6 +67,7 @@ class Videos extends Component{
             </div>
 
         </div>
+        {this.state.open ? <Video /> : null}
         <table id="videos">
             <tbody id="tabelaVidea">
             <tr>
@@ -96,5 +105,38 @@ class Videos extends Component{
     });
   }
 }
+var link;
+class Video extends React.Component {
+    playVideo() {
+        console.log(link);
+      this.refs.vidRef.play();
+    }
+    
+    pauseVideo() {
+      this.refs.vidRef.pause();
+    }
+    
+    render() {
+      return(
+        <div>
+            <p>{link}</p>
+          <video ref="vidRef" src={link} type="video/webm"></video>
+          <Buttons playVideo={this.playVideo.bind(this)} pauseVideo={this.pauseVideo.bind(this)} />
+        </div>
+      );
+    }
+  }
+  
+  class Buttons extends React.Component {
+    render(){
+      return(
+        <div>
+            <div id='app'></div>
+          <button id='playButton' onClick={this.props.playVideo}>Play!</button>
+          <button id='pauseButton' onClick={this.props.pauseVideo}>Pause!</button>
+        </div>
+      );
+    }
+  }
 
 export default Videos ;

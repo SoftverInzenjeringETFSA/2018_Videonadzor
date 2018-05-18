@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 const express = require('express')
 const app = express()
 var bodyParser = require('body-parser')
-
+var fs = require('file-system');
 var multer = require('multer')
 var upload = multer({ dest: 'uploads/' })
 
@@ -104,8 +104,17 @@ app.post('/searchVideos', upload.single('data'), (req,res, next)=>{
 
 app.post('/getVideo', upload.single('data'), (req,res, next)=>{
     let naziv = req.body.data;
-    //dddd
-    res.send("ddd")
+    MongoClient.connect(uri, function(err, client){
+        if (err) throw err;
+        const collection = client.db('test').collection('videos');
+        collection.find({}).toArray(function(err, results) {
+            //vraca se uvijek isti jer nevalja baza
+            console.log(results[9].path);
+            fs.readFile(results[9].path, 'utf8', function(err, data) {  
+                res.send(data);
+            });
+        });
+    })
 })
 
 
