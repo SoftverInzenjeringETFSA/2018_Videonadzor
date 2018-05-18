@@ -109,8 +109,8 @@ app.post('/getVideo', upload.single('data'), (req,res, next)=>{
         const collection = client.db('test').collection('videos');
         collection.find({}).toArray(function(err, results) {
             //vraca se uvijek isti jer nevalja baza
-            console.log(results[9].path);
-            fs.readFile(results[9].path, 'utf8', function(err, data) {  
+            //console.log(results[9].path);
+            fs.readFile('uploads/af91dd0d0d036bb80751c1628ba9b563', 'utf8', function(err, data) {  
                 res.send(data);
             });
         });

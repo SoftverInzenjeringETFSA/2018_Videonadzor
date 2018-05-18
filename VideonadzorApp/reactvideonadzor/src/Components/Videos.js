@@ -30,12 +30,23 @@ class Videos extends Component{
             }
         }
         axios.post('http://localhost:27017/getVideo', fd, config).then((res)=>{
-            var binaryData = [];
-            binaryData.push(res.data);
-            this.setState({video: new Blob(binaryData)});
-            this.setState({url: URL.createObjectURL(this.state.video), open: true});
+            /*
+                HINT
+                -res.data je sadrzaj video fajla, upsjesno primljen sa servera, logaj ako hoces da provjeris
+                -varijabla link je tu kako bi mogao djeliti informacije izmedju dvije komponente, ove komponente i komponente Video
+                 u kojoj se zapravo pusta video (dole ispod)
+                -"this.setState({open: true});" cini komponentu video vidljivom i renderuje je, ovo bi trebala biti zadnja linija ove fukcije
+                -u video playeru varijabla link se postavlja kao source za video
+                -nista sta sam probao nije radilo, stvar je samo postavit source kako treba
+                -ovo koda ispod je od posljednjeg pokusaja
+                -ako dole umjesto link kao src stavis "vaj", taj video ce se pustiti tak da radi player
+                -sretno
+            */
+            this.setState({video: new Blob([res.data], {type: 'video/webm'})});
+            this.setState({url: URL.createObjectURL(this.state.video)});
             console.log(this.state.url);
             link = this.state.url;
+            this.setState({open: true});
         })
     }
     pretraziVidee() {
@@ -119,8 +130,7 @@ class Video extends React.Component {
     render() {
       return(
         <div>
-            <p>{link}</p>
-          <video ref="vidRef" src={link} type="video/webm"></video>
+          <video ref="vidRef" src={link} autoPlay></video>
           <Buttons playVideo={this.playVideo.bind(this)} pauseVideo={this.pauseVideo.bind(this)} />
         </div>
       );
