@@ -6,30 +6,23 @@ const search_style ={
   backgroundColor:'#2c6fd4',
   color:'#ffffff'
 };
-
 class Videos extends Component{
     constructor(props) {
         super(props);
         this.state = {
             searchString: '',
             //rows: [{naziv: "01-02-2018_22-30", kamera: 1}]
-            rows: []
+            rows: [],
+            video:[],
+            trazeniVideo:[],
+            red:0
         };
         this.pretraziVidee = this.pretraziVidee.bind(this);
         this.pustiSnimak = this.pustiSnimak.bind(this);
+        this.arhivirajVideo=this.arhivirajVideo.bind(this);
+        this.getTrazeniVideo=this.getTrazeniVideo.bind(this);
     }
-    pustiSnimak(naziv) {
-        var fd = new FormData(); 
-        fd.append('data', naziv)
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        }
-        axios.post('http://localhost:27017/getVideo', fd, config).then((res)=>{
-            window.location = '/playVideo'
-        })
-    }
+ 
     pretraziVidee() {
         var fd = new FormData(); 
         fd.append('data', this.state.searchString)
@@ -40,9 +33,51 @@ class Videos extends Component{
         }
         axios.post('http://localhost:27017/searchVideos', fd, config).then((res)=>{
             //console.log(res.data)
+            this.setState({trazeniVideo: res.data});
+            this.setState({video: res.data});
             this.setState({rows: res.data});
-        })
+})
     }
+        
+    arhivirajVideo(e){
+        var red=(e.target.parentElement.parentElement.parentElement.cells[0].textContent);
+        //var nazivVidea=(e.target.parentElement.parentElement.parentElement.cells[0].textContent+e.target.parentElement.parentElement.parentElement.cells[2].textContent);
+        //var dat=e.target.parentElement.parentElement.parentElement.cells[0].textContent;
+        //var naziv=e.target.parentElement.parentElement.parentElement.cells[2].textContent;
+        console.log(this.state.video[red]);
+        const config = {
+        headers: {
+            'content-type': 'application/json'
+            }
+        }
+        axios.post('http://localhost:27017/addArchive', this.state.video[red]).then( (res) =>{
+        alert(JSON.stringify(res) )
+            })
+    }
+    pustiSnimak(e) {
+        var red=(e.target.parentElement.parentElement.parentElement.cells[0].textContent);
+        this.setState({red:red});
+        window.location = '/playVideo'
+        
+        /*var fd = new FormData(); 
+        fd.append('data', naziv)
+        naziv="52f32b961958a952b992169205e5c696";
+        console.log(naziv);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        axios.post('http://localhost:27017/getVideo', fd, config).then((res)=>{
+            console.log(res.data);
+            window.location = '/playVideo'
+        })
+        */
+    }
+    getTrazeniVideo(){
+    console.log(this.state.trazeniVideo[this.state.red]);
+       return this.state.trazeniVideo[this.state.red]
+   }
     render() {
     return(
       <div>
@@ -72,15 +107,18 @@ class Videos extends Component{
                     </form>
                 </th>
             </tr>
-            {this.state.rows.map((r) => {
+            {this.state.rows.map((r,i) => {
                 return(
-                <tr key={r.naziv}>
-                    <td>{r.naziv}</td>
-                    <td>{r.naziv.substr(0, 10).replace(/-/g, '.')}</td>
-                    <td>{"Camera " + r.kamera}</td>
+                <tr key={i}>
+                    <td>{i}</td>
+                    <td>{r._id}</td>
+                    <td>{r.fieldname}</td>
+                    <td>{"Camera " + r.encoding}</td>
                     <td>
                         <button className ="remove-button"><i className="fa fa-times" ></i></button>
-                        <button onClick={() =>this.pustiSnimak(r.naziv)} className ="watch-button"><i className="fa fa-eye" ></i></button>
+                        <button onClick={this.pustiSnimak} className ="watch-button"><i className="fa fa-eye" ></i></button>
+                        <button  onClick={this.arhivirajVideo}   className="archive-button"><i className="fa fa-archive" ></i></button>
+                        <button ref="dugme"  className="save-button"><i className="fa fa-save" ></i></button>
                     </td>
                 </tr>);
             })}

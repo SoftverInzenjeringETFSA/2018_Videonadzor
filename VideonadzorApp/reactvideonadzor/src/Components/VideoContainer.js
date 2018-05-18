@@ -81,6 +81,14 @@ class VideoContainer extends Component{
                 <div className="video-streamer" ref='kamera'>
                 <Webcam src={this.state.src}/>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                     <div><button onClick={this.pokreniSnimanje}>Start Record</button></div>
                     <div><button onClick={this.zaustaviSnimanje}>Stop Record</button></div>
                     <div><ZakaziTerminSnimanja /></div>

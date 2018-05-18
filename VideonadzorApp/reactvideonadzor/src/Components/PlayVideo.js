@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {Component} from 'react'
+import {getTrazeniVideo} from './Videos'
 
 const search_style ={
   backgroundColor:'#2c6fd4',
@@ -7,18 +8,33 @@ const search_style ={
 };
 
 class Video extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+       
+    };
+    //this.pretraziVidee = this.pretraziVidee.bind(this);
+    
+}
+
+
     playVideo() {
-      this.refs.vidRef.play();
+      /*var video=new Videos;
+      var trazeni=video.getTrazeniVideo();
+      console.log(trazeni);*/
+      //this.refs.vidRef.play();
+      window.upload('file:///C:/Users/Amera Alic/Desktop/Dejoo/2018_Videonadzor/VideonadzorApp/uploads/kkk');
     }
     
     pauseVideo() {
       this.refs.vidRef.pause();
+     
     }
     
     render() {
       return(
         <div>
-          <video ref="vidRef" src="https://clips.vorwaerts-gmbh.de/VfE_html5.mp4" type="video/mp4"></video>
+          <video ref="vidRef" src={{uri:"file:///C:/Users/Amera Alic/Desktop/Dejoo/2018_Videonadzor/VideonadzorApp/uploads/52f32b961958a952b992169205e5c696"}} ></video>
           <Buttons playVideo={this.playVideo.bind(this)} pauseVideo={this.pauseVideo.bind(this)} />
         </div>
       );

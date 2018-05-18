@@ -184,7 +184,7 @@
 .fa{
   color: white;
 }
-.edit-button, .remove-button, .watch-button
+.edit-button, .remove-button, .watch-button, .save-button, .archive-button
 {
   border-radius: 7px;
   box-shadow: none;
@@ -197,6 +197,12 @@
 }
 .watch-button{
   background-color: #2c6fd4;
+}
+.archive-button{
+  background-color: #000000;
+}
+.save-button{
+  background-color: #595b5e;
 }
 
 #scheduledDeletionForm{
