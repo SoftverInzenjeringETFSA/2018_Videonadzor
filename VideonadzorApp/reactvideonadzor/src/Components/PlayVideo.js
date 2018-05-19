@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, {Component} from 'react'
-import {getTrazeniVideo} from './Videos'
+//import {imeSnimka} from './Videos.js';
 
 const search_style ={
   backgroundColor:'#2c6fd4',
@@ -11,7 +11,7 @@ class Video extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-       
+      // naziv: imeSnimka
     };
     //this.pretraziVidee = this.pretraziVidee.bind(this);
     
@@ -22,8 +22,10 @@ class Video extends React.Component {
       /*var video=new Videos;
       var trazeni=video.getTrazeniVideo();
       console.log(trazeni);*/
-      //this.refs.vidRef.play();
-      window.upload('file:///C:/Users/Amera Alic/Desktop/Dejoo/2018_Videonadzor/VideonadzorApp/uploads/kkk');
+      //console.log(this.state.naziv);
+     
+      this.refs.vidRef.play();
+      //window.upload('file:///C:/Users/Amera Alic/Desktop/Dejoo/2018_Videonadzor/VideonadzorApp/uploads/kkk');
     }
     
     pauseVideo() {
@@ -32,9 +34,10 @@ class Video extends React.Component {
     }
     
     render() {
+      
       return(
         <div>
-          <video ref="vidRef" src={{uri:"file:///C:/Users/Amera Alic/Desktop/Dejoo/2018_Videonadzor/VideonadzorApp/uploads/52f32b961958a952b992169205e5c696"}} ></video>
+          <video ref="vidRef" src={this.state.naziv} ></video>
           <Buttons playVideo={this.playVideo.bind(this)} pauseVideo={this.pauseVideo.bind(this)} />
         </div>
       );

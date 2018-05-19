@@ -8,7 +8,7 @@ const app = express()
 var bodyParser = require('body-parser')
 
 var multer = require('multer')
-var upload = multer({ dest: 'uploads/' })
+var upload = multer({ dest: 'reactvideonadzor/public/uploads/' })
 
 const PORT = 27017;
 
@@ -93,7 +93,7 @@ app.post('/addVideo', upload.single('data'), (req,res, next)=>{
    MongoClient.connect(uri, function(err, client){
         if (err) throw err;
         const collection = client.db('test').collection('videos');
-        collection.insertOne({name: new Date(), data:req.file}, (err,res)=>{
+        collection.insertOne({name: new Date().getDate(), data:req.file}, (err,res)=>{
             if(err)throw err;
             //console.log(res);
             console.log('Navodno smo upisali jedan fjal')
@@ -111,8 +111,8 @@ app.post('/searchVideos', upload.single('data'), (req,res, next)=>{
     MongoClient.connect(uri, function(err, client){
         if (err) throw err;
         const collection = client.db('test').collection('videos');
-        collection.find({}).toArray(function(err, results) {
-           // console.log(results);
+        collection.find().toArray(function(err, results) {
+           console.log(results);
             res.send(results);
         });
     }) 

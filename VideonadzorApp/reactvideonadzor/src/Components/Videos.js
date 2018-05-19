@@ -13,14 +13,16 @@ class Videos extends Component{
             searchString: '',
             //rows: [{naziv: "01-02-2018_22-30", kamera: 1}]
             rows: [],
+            open: false,
             video:[],
             trazeniVideo:[],
-            red:0
+            red:0,
+            prenesiNaziv:''
         };
         this.pretraziVidee = this.pretraziVidee.bind(this);
         this.pustiSnimak = this.pustiSnimak.bind(this);
         this.arhivirajVideo=this.arhivirajVideo.bind(this);
-        this.getTrazeniVideo=this.getTrazeniVideo.bind(this);
+        
     }
  
     pretraziVidee() {
@@ -55,29 +57,12 @@ class Videos extends Component{
             })
     }
     pustiSnimak(e) {
-        var red=(e.target.parentElement.parentElement.parentElement.cells[0].textContent);
-        this.setState({red:red});
-        window.location = '/playVideo'
-        
-        /*var fd = new FormData(); 
-        fd.append('data', naziv)
-        naziv="52f32b961958a952b992169205e5c696";
-        console.log(naziv);
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        }
-        axios.post('http://localhost:27017/getVideo', fd, config).then((res)=>{
-            console.log(res.data);
-            window.location = '/playVideo'
-        })
-        */
+        imeSnimka='uploads\\'+e;
+        this.setState({prenesiNaziv:imeSnimka});
+        //window.location = '/playVideo';
+        this.setState({open: true});
     }
-    getTrazeniVideo(){
-    console.log(this.state.trazeniVideo[this.state.red]);
-       return this.state.trazeniVideo[this.state.red]
-   }
+   
     render() {
     return(
       <div>
@@ -94,6 +79,7 @@ class Videos extends Component{
             </div>
 
         </div>
+        {this.state.open ? <Video /> : null}
         <table id="videos">
             <tbody id="tabelaVidea">
             <tr>
@@ -111,12 +97,12 @@ class Videos extends Component{
                 return(
                 <tr key={i}>
                     <td>{i}</td>
-                    <td>{r._id}</td>
-                    <td>{r.fieldname}</td>
-                    <td>{"Camera " + r.encoding}</td>
+                    <td>{r.name}</td>
+                    <td>{r.data.filename}</td>
+                    <td>{"Camera " + r.data.encoding}</td>
                     <td>
                         <button className ="remove-button"><i className="fa fa-times" ></i></button>
-                        <button onClick={this.pustiSnimak} className ="watch-button"><i className="fa fa-eye" ></i></button>
+                        <button onClick={() =>this.pustiSnimak(r.data.filename)} className ="watch-button"><i className="fa fa-eye" ></i></button>
                         <button  onClick={this.arhivirajVideo}   className="archive-button"><i className="fa fa-archive" ></i></button>
                         <button ref="dugme"  className="save-button"><i className="fa fa-save" ></i></button>
                     </td>
@@ -134,5 +120,38 @@ class Videos extends Component{
     });
   }
 }
+var imeSnimka;
+class Video extends React.Component {
+    playVideo() {
+    
+      this.refs.vidRef.play();
+    }
+    
+    pauseVideo() {
+      this.refs.vidRef.pause();
+    }
+    
+    render() {
+      return(
+        <div>
+          <video ref="vidRef" src={imeSnimka} autoPlay></video>
+          <Buttons playVideo={this.playVideo.bind(this)} pauseVideo={this.pauseVideo.bind(this)} />
+        </div>
+      );
+    }
+  }
+  
+  class Buttons extends React.Component {
+    render(){
+      return(
+        <div>
+            <div id='app'></div>
+            <button onClick={this.props.playVideo} type="button" id="button_play" className="btn"><i className="fa fa-play"></i></button>
+            <button type="button" onClick={this.props.pauseVideo} id="button_stop" className="btn"><i className="fa fa-stop"></i></button>
 
+        </div>
+      );
+    }
+  }
+  
 export default Videos ;

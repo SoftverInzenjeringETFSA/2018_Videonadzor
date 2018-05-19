@@ -184,7 +184,7 @@
 .fa{
   color: white;
 }
-.edit-button, .remove-button, .watch-button, .save-button, .archive-button
+.edit-button, .remove-button, .watch-button, .save-button, .archive-button,
 {
   border-radius: 7px;
   box-shadow: none;
@@ -214,4 +214,10 @@
 #searchForm{
   padding: 0.5em;
   background-color: #b42e34;
+}
+#button_play{
+  background-color: #2c6fd4;
+}
+#button_stop{
+  background-color: #d42c35;
 }

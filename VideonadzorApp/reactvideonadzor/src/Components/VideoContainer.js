@@ -7,14 +7,17 @@ import './Css/stream.css'
 import ZakaziTerminSnimanja from './ZakaziTerminSnimanja.js';
 import PrikaziTermineSnimanja from './PrikaziTermineSnimanja.js';
 
+
 class VideoContainer extends Component{
 
     constructor(props){
         super(props)
+        this.state = { screenshot: null }
         this.state={width:100, height:100}
         this.pokreniSnimanje = this.pokreniSnimanje.bind(this)
         this.zaustaviSnimanje = this.zaustaviSnimanje.bind(this)
         this.requestUserMedia = this.requestUserMedia.bind(this)
+       
     }
 
     componentDidMount(){
@@ -73,13 +76,20 @@ class VideoContainer extends Component{
         })
 
     }
+    setRef = (webcam) => {
+        this.webcam = webcam;
+      }
+    
+      capture = () => {
+        const imageSrc = this.webcam.getScreenshot();
+      };
 
     
     render(){
         return(
             <div className="video-container">
                 <div className="video-streamer" ref='kamera'>
-                <Webcam src={this.state.src}/>
+                <Webcam ref={this.setRef} screenshotFormat="image/jpeg" src={this.state.src}/>
                 </div>
                 <br/>
                 <br/>
@@ -89,10 +99,12 @@ class VideoContainer extends Component{
                 <br/>
                 <br/>
                 <br/>
+                <div><button onClick={this.capture}>Izdvoji frame</button></div>
                     <div><button onClick={this.pokreniSnimanje}>Start Record</button></div>
                     <div><button onClick={this.zaustaviSnimanje}>Stop Record</button></div>
                     <div><ZakaziTerminSnimanja /></div>
                     <div><PrikaziTermineSnimanja /></div>
+                   
                 {/*<div className="video-controls">
                     <div className="player text-center">
                         <button type="button" id="button_fbw" className="btn">
