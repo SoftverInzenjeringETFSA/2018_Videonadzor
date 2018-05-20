@@ -85,6 +85,17 @@ app.post('/brisiTermin', (req, res)=>{
     });
 })
 
+app.post('/brisiSnimak', (req, res)=>{    
+    MongoClient.connect(uri, function(err, client){
+        if (err) throw err;        
+        const collection = client.db('test').collection('videos');
+        collection.deleteOne({ name: req.body.name }, function(err, obj) {
+            if (err) throw err;
+            res.send(obj.result.n + " document(s) deleted");
+            client.close();
+        });
+    }); 
+})
 
 app.post('/addVideo', upload.single('data'), (req,res, next)=>{
     console.log('dosao sam ovdje')

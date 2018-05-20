@@ -62,6 +62,21 @@ class Videos extends Component{
         //window.location = '/playVideo';
         this.setState({open: true});
     }
+
+    brisiSnimak(ime) {
+        console.log("obrisi video: " + ime);
+        var tmp = {
+            name: ime
+          };
+        const config = {
+            headers: {
+                'content-type': 'application/json'
+            }
+        }
+        axios.post('http://localhost:27017/brisiSnimak', tmp).then( (res) =>{
+            alert(res.data);
+        })   
+    }
    
     render() {
     return(
@@ -101,7 +116,7 @@ class Videos extends Component{
                     <td>{r.data.filename}</td>
                     <td>{"Camera " + r.data.encoding}</td>
                     <td>
-                        <button className ="remove-button"><i className="fa fa-times" ></i></button>
+                        <button onClick={() => this.brisiSnimak(r.name)} className ="remove-button"><i className="fa fa-times" ></i></button>
                         <button onClick={() =>this.pustiSnimak(r.data.filename)} className ="watch-button"><i className="fa fa-eye" ></i></button>
                         <button  onClick={this.arhivirajVideo}   className="archive-button"><i className="fa fa-archive" ></i></button>
                         <button ref="dugme"  className="save-button"><i className="fa fa-save" ></i></button>
