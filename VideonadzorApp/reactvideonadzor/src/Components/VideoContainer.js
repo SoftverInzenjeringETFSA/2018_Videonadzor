@@ -82,8 +82,8 @@ class VideoContainer extends Component{
     
     capture() {
         
-        console.log(this.webcam);
-        const imageSrc = this.webcam.getScreenshot();
+        //console.log(this.webcam);
+        //const imageSrc = this.webcam.getScreenshot();
     };
 
     
@@ -95,15 +95,11 @@ class VideoContainer extends Component{
                 </div>
                 <br/>
                 <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <div><button onClick={this.capture}>Izdvoji frame</button></div>
-                    <div><button onClick={this.pokreniSnimanje}>Start Record</button></div>
-                    <div><button onClick={this.zaustaviSnimanje}>Stop Record</button></div>
+               
+                
+                <div><button  onClick={this.capture} class="btn btn-default btn-sm"><span class="glyphicon glyphicon-screenshot"></span> Screenshot</button></div>
+                    <div><button  onClick={this.pokreniSnimanje}class="btn btn-default btn-sm"><span class="glyphicon glyphicon-screenshot"></span> Start Record</button>         
+                    <button  onClick={this.zaustaviSnimanje} class="btn btn-default btn-sm"><span class="glyphicon glyphicon-screenshot"></span> Stop Record</button></div>
                     <div><ZakaziTerminSnimanja /></div>
                     <div><PrikaziTermineSnimanja /></div>
                    
