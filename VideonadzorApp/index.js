@@ -155,6 +155,15 @@ app.post('/addArchive', upload.single('data'), (req,res, next)=>{
         client.close();
     });
 })
+app.post('/saveVideo', upload.single('data'), (req,res, next)=>{
+    //console.log(req.body);
+    MongoClient.connect(uri, function(err, client) {
+     const collection = client.db("archive").collection("video");
+     collection.insertOne({name:new Date(), data:req.body}, (err,res)=>{
+         if(err)throw err;
+         client.close();
+     });
+ })
 })
 
 

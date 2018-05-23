@@ -78,11 +78,13 @@ class VideoContainer extends Component{
     }
     setRef = (webcam) => {
         this.webcam = webcam;
-      }
+    }
     
-      capture = () => {
+    capture() {
+        
+        console.log(this.webcam);
         const imageSrc = this.webcam.getScreenshot();
-      };
+    };
 
     
     render(){

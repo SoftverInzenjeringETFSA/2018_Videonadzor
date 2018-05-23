@@ -22,6 +22,7 @@ class Videos extends Component{
         this.pretraziVidee = this.pretraziVidee.bind(this);
         this.pustiSnimak = this.pustiSnimak.bind(this);
         this.arhivirajVideo=this.arhivirajVideo.bind(this);
+        this.spasiVideo = this.spasiVideo.bind(this);
         
     }
  
@@ -56,6 +57,7 @@ class Videos extends Component{
         alert(JSON.stringify(res) )
             })
     }
+    
     pustiSnimak(e) {
         imeSnimka='uploads\\'+e;
         this.setState({prenesiNaziv:imeSnimka});
@@ -78,6 +80,15 @@ class Videos extends Component{
         })   
     }
    
+    spasiVideo(val) {
+        var selectedRow = (val.target.parentElement.parentElement.parentElement.cells[0].textContent)
+        const config = { headers: {
+                            'content-type' : 'application/json'
+                        }
+        }
+        axios.post('http://localhost:27017/saveVideo', this.state.video[selectedRow]).then ((res) => { alert(JSON.stringify(res)) })
+       
+    }
     render() {
     return(
       <div>
@@ -119,7 +130,7 @@ class Videos extends Component{
                         <button onClick={() => this.brisiSnimak(r.name)} className ="remove-button"><i className="fa fa-times" ></i></button>
                         <button onClick={() =>this.pustiSnimak(r.data.filename)} className ="watch-button"><i className="fa fa-eye" ></i></button>
                         <button  onClick={this.arhivirajVideo}   className="archive-button"><i className="fa fa-archive" ></i></button>
-                        <button ref="dugme"  className="save-button"><i className="fa fa-save" ></i></button>
+                        <button  onClick={this.spasiVideo}   className="archive-button"><i className="fa fa-save" ></i></button>
                     </td>
                 </tr>);
             })}
