@@ -26,6 +26,9 @@ class SideBar extends Component {
                     <li>
                         <Link to="/addUser">Add user</Link>
                     </li>
+                    <li>
+                        <Link to="/help">Help</Link>
+                    </li>
                 </ul>
             </div>
     );

@@ -8,7 +8,7 @@ import Video from './PlayVideo.js'
 import HorizontalNavBar from './HorizontalNavBar.js'
 import Stream from './Stream.js'
 import './Css/dashboard.css'
-
+import Help from './Help.js'
 
 
 class DashBoard extends Component{
@@ -28,6 +28,7 @@ class DashBoard extends Component{
                       <Route  path='/videos' component={Videos} />
                       <Route  path='/addUser' component={AddUser} />
                       <Route  path='/playVideo' component={Video} />
+                      <Route  path='/help' component={Help} /> 
                     </Switch>
                 </div>
 
