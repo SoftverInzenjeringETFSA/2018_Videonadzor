@@ -88,10 +88,16 @@ app.post('/brisiTermin', (req, res)=>{
 app.post('/brisiSnimak', (req, res)=>{    
     MongoClient.connect(uri, function(err, client){
         if (err) throw err;        
-        const collection = client.db('test').collection('videos');
+        let collection = client.db('test').collection('videos');
         collection.deleteOne({ name: req.body.name }, function(err, obj) {
             if (err) throw err;
             res.send(obj.result.n + " document(s) deleted");
+
+            client.db('test').collection('logs')
+                .insertOne({type:'deletion', action:'video ' + req.body.name + ' deleted by signed in user'}, (err,res)=>{
+                    if(err) throw err;
+                });
+
             client.close();
         });
     }); 

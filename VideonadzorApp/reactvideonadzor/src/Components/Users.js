@@ -7,6 +7,21 @@ const search_style ={
 };
 
 class AddUser extends Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            postoji:true
+        }
+    }
+    
+
+    removeUser() {
+        console.log("Brisanje");
+        this.setState({postoji:false})
+    }
+
+    
+
   render(){
     return(
       <div>
@@ -23,6 +38,7 @@ class AddUser extends Component{
                                 <th>Role</th>
                                 <th></th>
                             </tr>
+                            {this.state.postoji &&
                             <tr>
                                 <td>superUser123</td>
                                 <td>Michael</td>
@@ -30,11 +46,12 @@ class AddUser extends Component{
                                 <td>michaelj@gmail.com</td>
                                 <td>user</td>
                                 <td>
-                                    <button className ="remove-button"><i className="fa fa-times"></i></button>
+                                    <button className ="remove-button" onClick={this.removeUser.bind(this)}><i className="fa fa-times"></i></button>
                                     <button className ="watch-button"><i className="fa fa-eye"></i></button>
                                     <a href="./edit-user.html" className="btn btn-default edit-button"><i className="fa fa-edit"></i></a>
                                 </td>
                             </tr>
+                            }
                         </table>
       </div>
     );
