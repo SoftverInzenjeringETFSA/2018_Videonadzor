@@ -17,12 +17,14 @@ class Videos extends Component{
             video:[],
             trazeniVideo:[],
             red:0,
-            prenesiNaziv:''
+            prenesiNaziv:'',
+            sortedNewestFirst:true
         };
         this.pretraziVidee = this.pretraziVidee.bind(this);
         this.pustiSnimak = this.pustiSnimak.bind(this);
         this.arhivirajVideo=this.arhivirajVideo.bind(this);
         this.spasiVideo = this.spasiVideo.bind(this);
+        this.sortirajVideePoDatumu = this.sortirajVideePoDatumu.bind(this);
         
     }
  
@@ -41,7 +43,79 @@ class Videos extends Component{
             this.setState({rows: res.data});
 })
     }
+
+    sortirajVideePoDatumu()
+   {
+
+        var dugme = this.refs.tabela.rows[0].cells[1];
+
+        var brRedova = this.refs.tabela.rows.length;
+        brRedova--;
         
+        do
+        {
+            var zamjena = true;
+
+            
+            for(var i = 2; i <= brRedova; i++)
+            {
+                var datum = this.refs.tabela.rows[i - 1].cells[1].textContent.split(".");
+
+                var dan1 = datum[0];
+                var mjesec1 = datum[1];
+                var godina1 = datum[2];
+
+                var datum = this.refs.tabela.rows[i].cells[1].textContent.split(".");
+
+                var dan2 = datum[0];
+                var mjesec2 = datum[1];
+                var godina2 = datum[2];
+                            
+                    if(this.state.sortedNewestFirst)
+                    {
+                        dugme.children[0].className="fa fa-caret-down";
+
+                        if( (godina1 < godina2) || (godina1 == godina2 && mjesec1 < mjesec2) || (godina1 == godina2 && mjesec1 == mjesec2 && dan1<dan2) )
+                        {
+
+                            
+                            var row = this.refs.tabela.rows[i];
+                            var sibling = this.refs.tabela.rows[i - 1];
+
+                            var parent = row.parentNode;
+
+                            parent.insertBefore(row, sibling);
+
+                            zamjena = false;
+                        }
+                    
+                    }
+                    else
+                    {
+                        dugme.children[0].className="fa fa-caret-up";
+
+                        if( (godina1 > godina2) || (godina1 == godina2 && mjesec1 > mjesec2) || (godina1 == godina2 && mjesec1 == mjesec2 && dan1>dan2) )
+                        {
+
+                            
+                            var row = this.refs.tabela.rows[i];
+                            var sibling = this.refs.tabela.rows[i - 1];
+
+                            var parent = row.parentNode;
+
+                            parent.insertBefore(row, sibling);
+
+                            zamjena = false;
+                        }
+                    }
+
+            }
+        }while(!zamjena)
+
+        this.state.sortedNewestFirst = !this.state.sortedNewestFirst;
+    
+   }
+   
     arhivirajVideo(e){
         var red=(e.target.parentElement.parentElement.parentElement.cells[0].textContent);
         //var nazivVidea=(e.target.parentElement.parentElement.parentElement.cells[0].textContent+e.target.parentElement.parentElement.parentElement.cells[2].textContent);
@@ -106,11 +180,11 @@ class Videos extends Component{
 
         </div>
         {this.state.open ? <Video /> : null}
-        <table id="videos">
+        <table id="videos" ref="tabela">
             <tbody id="tabelaVidea">
             <tr>
                 <th>Video</th>
-                <th>Date <i className="fa fa-caret-up"></i></th>
+                <th>Date <i className="fa fa-caret-up" onClick={this.sortirajVideePoDatumu}></i></th>
                 <th>Camera</th>
                 <th>
                     <form className="form-inline">
@@ -118,6 +192,30 @@ class Videos extends Component{
                         <input type="button" className="btn btn my-2 my-sm-0" style={search_style} onClick={this.pretraziVidee} value="Search"/>
                     </form>
                 </th>
+            </tr>
+            <tr>
+                <th>Video1</th>
+                <th>02.06.2018.</th>
+                <th>Camera1</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Video2</th>
+                <th>01.06.2018.</th>
+                <th>Camera1</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Video3</th>
+                <th>02.05.2018.</th>
+                <th>Camera1</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Video4</th>
+                <th>02.06.2017.</th>
+                <th>Camera1</th>
+                <th></th>
             </tr>
             {this.state.rows.map((r,i) => {
                 return(
