@@ -10,7 +10,7 @@ var bodyParser = require('body-parser')
 var multer = require('multer')
 var upload = multer({ dest: 'reactvideonadzor/public/uploads/' })
 
-const PORT = 27017;
+const PORT = process.env.PORT || 27017;
 
 
 var uri = "mongodb+srv://aalic:aalic@videonadzor-kxlur.mongodb.net/test?retryWrites=true";
@@ -21,6 +21,7 @@ var uri = "mongodb+srv://aalic:aalic@videonadzor-kxlur.mongodb.net/test?retryWri
    client.close();
 });*/
 
+app.use(express.static(__dirname + '/reactvideonadzor/build'));
 
 app.use(express.static('/public'));
 app.use(bodyParser.json())
@@ -34,6 +35,10 @@ app.use((req, res, next) => {
   }
      next();
   });
+
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/reactvideonadzor/build/index.html');
+});
 
 app.post('/zakaziTermin', (req, res)=>{
     console.log(req.body )

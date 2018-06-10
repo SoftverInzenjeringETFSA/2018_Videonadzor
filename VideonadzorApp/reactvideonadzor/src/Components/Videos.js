@@ -65,7 +65,7 @@ class Videos extends Component{
                 var mjesec1 = datum[1];
                 var godina1 = datum[2];
 
-                var datum = this.refs.tabela.rows[i].cells[1].textContent.split(".");
+                datum = this.refs.tabela.rows[i].cells[1].textContent.split(".");
 
                 var dan2 = datum[0];
                 var mjesec2 = datum[1];
@@ -75,14 +75,14 @@ class Videos extends Component{
                     {
                         dugme.children[0].className="fa fa-caret-down";
 
-                        if( (godina1 < godina2) || (godina1 == godina2 && mjesec1 < mjesec2) || (godina1 == godina2 && mjesec1 == mjesec2 && dan1<dan2) )
+                        if( (godina1 < godina2) || (godina1 === godina2 && mjesec1 < mjesec2) || (godina1 === godina2 && mjesec1 === mjesec2 && dan1<dan2) )
                         {
 
                             
-                            var row = this.refs.tabela.rows[i];
-                            var sibling = this.refs.tabela.rows[i - 1];
+                            let row = this.refs.tabela.rows[i];
+                            let sibling = this.refs.tabela.rows[i - 1];
 
-                            var parent = row.parentNode;
+                            let parent = row.parentNode;
 
                             parent.insertBefore(row, sibling);
 
@@ -94,14 +94,14 @@ class Videos extends Component{
                     {
                         dugme.children[0].className="fa fa-caret-up";
 
-                        if( (godina1 > godina2) || (godina1 == godina2 && mjesec1 > mjesec2) || (godina1 == godina2 && mjesec1 == mjesec2 && dan1>dan2) )
+                        if( (godina1 > godina2) || (godina1 === godina2 && mjesec1 > mjesec2) || (godina1 === godina2 && mjesec1 === mjesec2 && dan1>dan2) )
                         {
 
                             
-                            var row = this.refs.tabela.rows[i];
-                            var sibling = this.refs.tabela.rows[i - 1];
+                            let row = this.refs.tabela.rows[i];
+                            let sibling = this.refs.tabela.rows[i - 1];
 
-                            var parent = row.parentNode;
+                            let parent = row.parentNode;
 
                             parent.insertBefore(row, sibling);
 
@@ -112,7 +112,7 @@ class Videos extends Component{
             }
         }while(!zamjena)
 
-        this.state.sortedNewestFirst = !this.state.sortedNewestFirst;
+        this.setState({sortedNewestFirst: !this.state.sortedNewestFirst});
     
    }
    
